@@ -8,11 +8,15 @@
     "npm": "5.6.0"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "NODE_ENV=development nodemon index.js"
   },
   "author": "Lucian Condrea",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.3"
+    "config": "^1.30.0",
+    "express": "^4.16.3",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^1.0.0"
   }
 }
