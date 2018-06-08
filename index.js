@@ -1,6 +1,7 @@
 const config = require('config');
 const express = require('express');
 const mongoose = require('mongoose');
+require('./models');
 require('./services/passport');
 
 const MONGODB_URI = process.env.MONGODB_URI || config.get('MONGODB_URI');
