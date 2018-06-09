@@ -8,12 +8,15 @@
     "npm": "5.6.0"
   },
   "scripts": {
-    "start": "node index.js",
-    "dev": "NODE_ENV=development nodemon index.js"
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "NODE_ENV=development nodemon index.js",
+    "start": "node index.js"
   },
   "author": "Lucian Condrea",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^3.5.1",
     "config": "^1.30.0",
     "cookie-session": "^2.0.0-beta.3",
     "express": "^4.16.3",
