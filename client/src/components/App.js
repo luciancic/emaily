@@ -4,6 +4,8 @@ import Header from './Header';
 import Dashboard from './Dashboard';
 import Landing from './Landing';
 
+import 'materialize-css/dist/css/materialize.min.css';
+
 const App = () => 
     <Router>
       <div id="app">
