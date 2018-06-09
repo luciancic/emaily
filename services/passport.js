@@ -15,19 +15,15 @@ const clientSecret = process.env.GOOGLE_OAUTH_CLIENT_SECRET || config.get('GOOGL
 const callbackURL = '/auth/google/callback';
 
 const gsOptions = { clientID, clientSecret, callbackURL };
-const gsCallback = (accessToken, refreshToken, profile, done) => {
-  User.findOne({ googleId : profile.id })
-  .then((existingUser) => {
-    if (existingUser) {
-      done(null, existingUser);
-    } else {
-      User.create({ googleId: profile.id })
-      .then(newUser => {
-        done(null, newUser);
-      });
-    }
-  })
-  .catch(err => done(err));
+
+const gsCallback = async (accessToken, refreshToken, profile, done) => {
+  const existingUser = await User.findOne({ googleId : profile.id });
+  
+  if (existingUser) {
+    return done(null, existingUser);
+  }
+  const newUser = await User.create({ googleId: profile.id })
+  done(null, newUser);
 };
 
 passport.use(new GoogleStrategy( gsOptions, gsCallback ));
