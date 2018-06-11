@@ -13,6 +13,11 @@ mongoose.connect(MONGODB_URI);
 
 const COOKIE_KEY = process.env.COOKIE_KEY || config.get('COOKIE_KEY');
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.use(cookieSession({
   maxAge: 30 * 24 * 60 * 60 * 1000,
@@ -22,11 +27,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Circumvent CORS issue
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
 
 require('./routes/auth')(app);
 
