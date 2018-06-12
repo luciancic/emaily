@@ -8,14 +8,11 @@ require('./models');
 require('./services/passport');
 const app = express();
 
-const MONGODB_URI = process.env.MONGODB_URI || config.get('MONGODB_URI');
-mongoose.connect(MONGODB_URI);
-
-const COOKIE_KEY = process.env.COOKIE_KEY || config.get('COOKIE_KEY');
+mongoose.connect(config.get('MONGODB_URI'));
 
 app.use(cookieSession({
   maxAge: 30 * 24 * 60 * 60 * 1000,
-  keys: [COOKIE_KEY]
+  keys: [config.get('COOKIE_KEY')]
 }));
 app.use(passport.initialize());
 app.use(passport.session());

@@ -10,11 +10,12 @@ passport.deserializeUser((id, done) => {
   User.findById(id).then(user => done(null, user));
 });
 
-const clientID = process.env.GOOGLE_OAUTH_CLIENT_ID || config.get('GOOGLE_OAUTH.CLIENT_ID');
-const clientSecret = process.env.GOOGLE_OAUTH_CLIENT_SECRET || config.get('GOOGLE_OAUTH.CLIENT_SECRET');
-const callbackURL = '/auth/google/callback';
 
-const gsOptions = { clientID, clientSecret, callbackURL };
+const gsOptions = { 
+  clientID: config.get('GOOGLE_OAUTH.CLIENT_ID'), 
+  clientSecret: config.get('GOOGLE_OAUTH.CLIENT_SECRET'), 
+  callbackURL: '/auth/google/callback'
+};
 
 const gsCallback = async (accessToken, refreshToken, profile, done) => {
   const existingUser = await User.findOne({ googleId : profile.id });
