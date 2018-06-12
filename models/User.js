@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
   googleId: String,
-  credits: { type: String, default: 0 }
+  credits: { type: Number, default: 0 }
 });
 
 mongoose.model('users', userSchema);
