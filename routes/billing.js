@@ -1,8 +1,9 @@
 const config = require('config');
 const stripe = require('stripe')(config.get('STRIPE.SECRET_KEY'));
+const checkAuth = require('../middlewares/checkAuth');
 
 module.exports = app => {
-  app.post('/api/payment', async (req, res) => {
+  app.post('/api/payment', checkAuth(), async (req, res) => {
     const charge = await stripe.charges.create({
       amount: 500,
       currency: 'cad',
