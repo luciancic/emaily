@@ -5,6 +5,9 @@ import StripeCheckout from 'react-stripe-checkout';
 
 class Payment extends Component {
   render() {
+    console.log('NODE_ENV:', process.env.NODE_ENV);
+    console.log('Stripe key:', process.env.REACT_APP_STRIPE_KEY);
+    
     return <StripeCheckout 
       amount={500}
       currency="CAD"
