@@ -19,8 +19,7 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
-require('./routes/auth')(app);
-require('./routes/billing')(app);
+require('./routes')(app);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
