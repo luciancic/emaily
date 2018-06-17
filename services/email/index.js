@@ -8,7 +8,7 @@ module.exports = async (subject, question, recipients) => {
   const body = require('./template')(question);
 
   const pers = new Personalization();
-  recipients.forEach(email => pers.addTo({ email }));
+  recipients.forEach(email => pers.addTo(email));
   
   const mail = new Mail();
   mail.addPersonalization(pers);

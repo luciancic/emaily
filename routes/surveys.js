@@ -12,7 +12,9 @@ module.exports = (app) => {
         checkMinimumCredits(1),
 
         (req, res) => {
-            const { title, subject, question, recipients } = req.body;
+            let { title, subject, question, recipients } = req.body;
+
+            // TODO: Before implementing front-end, rethink/refactor data structure of recipients
             recipients = recipients.split(',').map(email => ({ email: email.trim() }))
 
             const survey = new Survey({
