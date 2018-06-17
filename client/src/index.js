@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import reduxThunk from 'redux-thunk';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-
+import axios from 'axios';
 import App from './components/App';
 import rootReducer from './reducers';
 import registerServiceWorker from './registerServiceWorker';
@@ -15,3 +15,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 registerServiceWorker();
+window.axios = axios;
