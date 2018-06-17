@@ -6,6 +6,10 @@ const sendEmail = require('../services/email');
 const Survey = mongoose.model('Survey');
 
 module.exports = (app) => {
+    app.get('/api/surveys/thankyou', (req, res) => {
+        res.send('Thank you for answering our survey!');
+    });
+
     app.post(
         '/api/surveys',
         checkAuth(),

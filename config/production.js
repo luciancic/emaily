@@ -9,5 +9,6 @@ module.exports = {
   },
   COOKIE_KEY: process.env.COOKIE_KEY,
   MONGODB_URI: process.env.MONGODB_URI,
-  SENDGRID_API_KEY: process.env.SENDGRID_API_KEY
+  SENDGRID_API_KEY: process.env.SENDGRID_API_KEY,
+  REDIRECT_DOMAIN: process.env.REDIRECT_DOMAIN
 };
