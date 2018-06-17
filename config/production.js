@@ -7,6 +7,7 @@ module.exports = {
     PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY,
     SECRET_KEY: process.env.STRIPE_SECRET_KEY
   },
+  COOKIE_KEY: process.env.COOKIE_KEY,
   MONGODB_URI: process.env.MONGODB_URI,
-  COOKIE_KEY: process.env.COOKIE_KEY
+  SENDGRID_API_KEY: process.env.SENDGRID_API_KEY
 };

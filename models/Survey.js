@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const surveySchema = new Schema({
-    body: String,
+    question: String,
     recipients: [{ 
         email: String, 
         responded: { type: Boolean, default: false }
     }],
-    subtitle: String,
+    subject: String,
     title: String,
     _user: { type: Schema.Types.ObjectId, ref: 'User' },
     createdOn: Date,

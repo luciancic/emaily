@@ -17,6 +17,8 @@
   "author": "Lucian Condrea",
   "license": "ISC",
   "dependencies": {
+    "@sendgrid/helpers": "^6.3.0",
+    "@sendgrid/mail": "^6.3.1",
     "body-parser": "^1.18.3",
     "concurrently": "^3.5.1",
     "config": "^1.30.0",
