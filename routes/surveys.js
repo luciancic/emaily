@@ -14,7 +14,7 @@ module.exports = (app) => {
         async (req, res) => {
             let { title, subject, question, recipients } = req.body;
             const { user } = req;
-            
+
             // TODO: Before implementing front-end, rethink/refactor data structure of recipients
             recipients = recipients.split(',').map(email => ({ email: email.trim() }))
 
@@ -27,11 +27,15 @@ module.exports = (app) => {
                 createdOn: Date.now()
             });
 
-            await sendEmail(subject, question, recipients)
-            const savedSurvey = await survey.save();
-            user.credits -= 1;
-            await user.save();
-            res.json(savedSurvey);
+            try {    
+                await sendEmail(subject, question, recipients)
+                const savedSurvey = await survey.save();
+                user.credits -= 1;
+                await user.save();
+                res.json(savedSurvey);
+            } catch (err) { 
+                res.status(422).send(err);
+            }
         }
     );
 }

@@ -17,5 +17,5 @@ module.exports = async (subject, question, recipients) => {
   mail.setSubject(subject);
   mail.setContent([ { type: 'text/html', value: body } ]);
 
-  sgMail.send(mail).catch(err => console.log(err.response.body.errors));
+  await sgMail.send(mail);
 }
