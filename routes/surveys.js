@@ -33,10 +33,10 @@ module.exports = (app) => {
 
             try {    
                 await sendEmail(subject, question, recipients)
-                const savedSurvey = await survey.save();
+                await survey.save();
                 user.credits -= 1;
-                await user.save();
-                res.json(savedSurvey);
+                const savedUser = await user.save();
+                res.json(savedUser);
             } catch (err) { 
                 res.status(422).send(err);
             }
