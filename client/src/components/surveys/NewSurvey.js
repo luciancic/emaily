@@ -1,5 +1,6 @@
 // Container for the form and review form.
 import React, { Component } from 'react';
+import { reduxForm } from 'redux-form';
 import NewSurveyForm from './NewSurveyForm';
 import NewSurveyReview from './NewSurveyReview';
 
@@ -21,4 +22,6 @@ class NewSurvey extends Component {
   }
 }
 
-export default NewSurvey;
+export default reduxForm({
+  form: 'surveyForm'
+})(NewSurvey);
