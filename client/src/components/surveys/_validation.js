@@ -1,10 +1,12 @@
-const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
 export default (fields) => (values) => {
     const errors = {};
     
-
+    
     // Validate emails
+    
+    // Email regexp
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    
     const recipients = values.recipients || '';
     let invalidEmails = recipients
         .split(',')
@@ -15,7 +17,7 @@ export default (fields) => (values) => {
     // TODO: Ajust error message when there is a trailing comma or double comma
 
 
-    // All fields are required
+    // Validate that all fields are filled in
     fields.forEach(({ name }) => {
         if (!values[name]) { errors[name] = 'This field is required' }
     });

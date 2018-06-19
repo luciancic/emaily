@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { Link } from 'react-router-dom';
 
-import SurveyField from './SurveyField';
-import fields from './fields';
-import validation from './validation';
+import NewSurveyField from './NewSurveyField';
+import fields from './_fields';
+import validation from './_validation';
 const validate = validation(fields);
 
 class SurveyForm extends Component {
     renderFields() {
         return (
-            fields.map(field => (<Field type="text" component={SurveyField} key={field.name} {...field}/>)) 
+            fields.map(field => (<Field type="text" component={NewSurveyField} key={field.name} {...field}/>)) 
         )
     }
 

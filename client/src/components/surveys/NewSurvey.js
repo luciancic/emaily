@@ -1,12 +1,12 @@
 // Container for the form and review form.
 import React, { Component } from 'react';
-import SurveyForm from './SurveyForm';
+import NewSurveyForm from './NewSurveyForm';
 
 class NewSurvey extends Component {
   render() {
     return (
       <div className="container">
-        <SurveyForm />
+        <NewSurveyForm />
       </div>
     )
   }
