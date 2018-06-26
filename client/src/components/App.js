@@ -18,7 +18,7 @@ class App extends Component {
   render(){
     return (
       <Router>
-        <div id="app">
+        <div id="app" style={{ minHeight: "100vh"}}>
           <Header />
           <div className="container">
             <Route exact path="/" component={Landing} />
