@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchSurveys } from '../../actions';
+import SurveyPromoter from './SurveyPromoter';
 
 class SurveyList extends Component {
     componentDidMount() {
         this.props.fetchSurveys();
     }
-    
-    renderSurveyList() {
-        
-    }
 
     render() {
-        return this.props.surveys.reverse().map(survey => (
-        <div className="card red lighten-4" key={survey._id}>
+        const { surveys } = this.props;
+
+        if ( surveys.fetched && surveys.length === 0) return (
+            <SurveyPromoter />
+        );
+
+        return surveys.reverse().map(survey => (
+        <div className="card red lighten-4" key={survey._id} style={{ marginTop: "35px" }}>
             <div className="card-content">
                 <span className="card-title">{survey.title}</span>
                 <p>{survey.question}</p>
